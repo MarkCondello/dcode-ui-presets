@@ -75,16 +75,16 @@ export default {
     },
     computed: {
         inputValue() {
-            let input = this.selection; 
+            let input = this.selection;
             if (!input) {
                 return;
-            } else if (this.multi && Array.isArray(input)) {
+            } 
+            if (this.multi && Array.isArray(input)) {
                 return input.map(value => {
-                    return value[this.optionValue];
+                    return value[this.optionValue] || this.value;
                 });
-            } else {
-                return input[this.optionValue];
             }
+            return input[this.optionValue] || this.value;
         },
     },
     methods: {
